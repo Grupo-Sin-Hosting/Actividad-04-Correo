@@ -21,3 +21,6 @@ La configuraciÃ³n inicial funcionaba, pero era un relay abierto: aceptÃ³ con 250
 
 ### Jacqueline Cáceres — Postfix y relay
 La configuración inicial funcionaba, pero era un relay abierto: aceptó con 250 un correo de un dominio ajeno a otro ajeno (5/12). mydestination dice qué dominios se entregan aquí y mynetworks quién puede usar el servidor para enviar a otros. Lo dejamos solo en 127.0.0.0/8 y la PC de secretaría, y la misma prueba respondió 554 Relay access denied. También quitamos la versión del saludo, desactivamos VRFY y el alias inscripciones llega a dos buzones: 12/12.
+
+### Jacqueline Cáceres — Postfix y relay
+La configuración inicial funcionaba, pero era un relay abierto: aceptó con 250 un correo de un dominio ajeno a otro ajeno (5/12). mydestination dice qué dominios se entregan aquí y mynetworks quién puede usar el servidor para enviar a otros. Lo dejamos solo en 127.0.0.0/8 y la PC de secretaría, y la misma prueba respondió 554 Relay access denied. También quitamos la versión del saludo, desactivamos VRFY y el alias inscripciones llega a dos buzones: 12/12.
