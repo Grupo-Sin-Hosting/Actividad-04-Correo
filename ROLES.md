@@ -12,3 +12,6 @@
 Cada integrante: crea su rama, agrega abajo un resumen de su parte con sus palabras y abre un Pull Request con `Closes #N`.
 
 ## Notas de cada integrante
+
+### Lizeth Rodríguez — Dovecot IMAPS y envío autenticado
+Dovecot quedó con ssl = required y el puerto 143 cerrado, así que el correo solo se lee por IMAPS (993) con un certificado de la CA del laboratorio (Verification: OK). Postfix valida usuarios con Dovecot (SASL). En el 587, sin TLS ni siquiera se ofrece la autenticación; sin usuario se rechaza con 553; con TLS y usuario se acepta (235); y nadie puede enviar con la dirección de otra persona. También coordiné el repositorio.
