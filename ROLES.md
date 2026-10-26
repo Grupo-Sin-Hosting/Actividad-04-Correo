@@ -18,3 +18,6 @@ Dovecot qued√≥ con ssl = required y el puerto 143 cerrado, as√≠ que el correo so
 
 ### Jacqueline Caceres ‚Äî Postfix y relay 
 La configuraci√≥n inicial funcionaba, pero era un relay abierto: acept√≥ con 250 un correo de un dominio ajeno a otro ajeno (5/12). mydestination dice qu√© dominios se entregan aqu√≠ y mynetworks qui√©n puede usar el servidor para enviar a otros. Lo dejamos solo en 127.0.0.0/8 y la PC de secretar√≠a, y la misma prueba respondi√≥ 554 Relay access denied. Tambi√©n quitamos la versi√≥n del saludo, desactivamos VRFY y el alias inscripciones llega a dos buzones: 12/12.
+
+### Jacqueline C·ceres ó Postfix y relay
+La configuraciÛn inicial funcionaba, pero era un relay abierto: aceptÛ con 250 un correo de un dominio ajeno a otro ajeno (5/12). mydestination dice quÈ dominios se entregan aquÌ y mynetworks quiÈn puede usar el servidor para enviar a otros. Lo dejamos solo en 127.0.0.0/8 y la PC de secretarÌa, y la misma prueba respondiÛ 554 Relay access denied. TambiÈn quitamos la versiÛn del saludo, desactivamos VRFY y el alias inscripciones llega a dos buzones: 12/12.
