@@ -1,0 +1,13 @@
+# Claves privadas: NUNCA al repositorio
+*.private
+*.key
+*.srl
+transferencia*
+lab07/compartido/
+# Credenciales
+creds.reales.json
+.env
+# Sistema
+Thumbs.db
+.DS_Store
+~$*

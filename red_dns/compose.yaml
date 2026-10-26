@@ -1,0 +1,64 @@
+# red_dns — red del laboratorio de DNS y correo (labs 7, 8, 9, 12 y 13).
+#   docker compose up -d --build      (la primera vez)
+#   docker compose exec <nodo> bash   (ns1, ns2, resolutor, cliente, externo, mail o mail2)
+#   docker compose stop / start       (apagar y encender conservando todo)
+# La carpeta de arriba (Acti-4-tec-wed-1) se ve dentro de cada nodo como /lab
+name: red_dns
+
+x-nodo: &nodo
+  build: .
+  image: tw1-red-dns:24.04
+  privileged: true
+  cgroup: host
+  tmpfs: [/run, /run/lock, /tmp]
+  volumes:
+    - ..:/lab
+
+services:
+  ns1:
+    <<: *nodo
+    hostname: ns1
+    networks:
+      aula:     { ipv4_address: 10.10.10.2 }
+      internet: { ipv4_address: 172.30.0.2 }
+  ns2:
+    <<: *nodo
+    hostname: ns2
+    networks: { aula: { ipv4_address: 10.10.10.3 } }
+  resolutor:
+    <<: *nodo
+    hostname: resolutor
+    networks: { aula: { ipv4_address: 10.10.10.4 } }
+  cliente:
+    <<: *nodo
+    hostname: cliente
+    dns: [10.10.10.4]
+    networks: { aula: { ipv4_address: 10.10.10.50 } }
+  externo:
+    <<: *nodo
+    hostname: externo
+    networks: { internet: { ipv4_address: 172.30.0.100 } }
+  # Labs 12 y 13: correo del colegio y de "otro dominio" (familia.internal)
+  mail:
+    <<: *nodo
+    hostname: mail
+    domainname: horizonte.internal
+    dns: [10.10.10.4]
+    networks: { aula: { ipv4_address: 10.10.10.25 } }
+    ports: ["9993:993", "9587:587"]
+  mail2:
+    <<: *nodo
+    hostname: mail
+    domainname: familia.internal
+    dns: [10.10.10.4]
+    networks: { aula: { ipv4_address: 10.10.10.26 } }
+
+networks:
+  aula:
+    ipam:
+      config:
+        - subnet: 10.10.10.0/24
+  internet:
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24
