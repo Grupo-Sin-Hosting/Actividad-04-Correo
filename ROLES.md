@@ -18,3 +18,6 @@ Dovecot quedó con `ssl = required` y el puerto 143 cerrado, así que el correo 
 
 ### Jacqueline Cáceres — Postfix y relay
 La configuración inicial funcionaba, pero era un relay abierto: aceptó con 250 un correo de un dominio ajeno a otro ajeno (5/12). `mydestination` dice qué dominios se entregan aquí y `mynetworks` quién puede usar el servidor para enviar a otros. Lo dejamos solo en 127.0.0.0/8 y la PC de secretaría, y la misma prueba respondió `554 Relay access denied`. También quitamos la versión del saludo, desactivamos VRFY y el alias inscripciones llega a dos buzones: 12/12.
+
+### Limber Quispe � SPF, DKIM y DMARC
+Publicamos y verificamos con dig: SPF v=spf1 mx -all (solo el MX env�a), la clave p�blica DKIM en mail._domainkey y DMARC con p=quarantine y alineaci�n estricta. En el destino, SPF dio pass para 10.10.10.25 y fail para 10.10.10.26. Al cambiar el asunto de una copia, DKIM respondi� Bad signature. OpenDKIM necesita Nameservers 10.10.10.4 porque usa su propio resolvedor.
