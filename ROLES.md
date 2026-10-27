@@ -18,3 +18,6 @@ Dovecot quedó con `ssl = required` y el puerto 143 cerrado, así que el correo 
 
 ### Jacqueline Cáceres — Postfix y relay
 La configuración inicial funcionaba, pero era un relay abierto: aceptó con 250 un correo de un dominio ajeno a otro ajeno (5/12). `mydestination` dice qué dominios se entregan aquí y `mynetworks` quién puede usar el servidor para enviar a otros. Lo dejamos solo en 127.0.0.0/8 y la PC de secretaría, y la misma prueba respondió `554 Relay access denied`. También quitamos la versión del saludo, desactivamos VRFY y el alias inscripciones llega a dos buzones: 12/12.
+
+### Juniors Parapaino � Thunderbird y cabeceras
+Para Thunderbird agregamos mail.horizonte.internal al archivo hosts (es el nombre del certificado) e importamos la CA del laboratorio. Las cuentas usan IMAP 9993 con SSL/TLS y SMTP 9587 con STARTTLS, con el usuario sin el dominio. Secretar�a envi� Inscripciones 2027 a la directora. Las cabeceras se leen de abajo hacia arriba: with ESMTPSA significa TLS y autenticaci�n, DKIM-Signature d=horizonte.internal es la firma y Authentication-Results muestra dkim=pass.
